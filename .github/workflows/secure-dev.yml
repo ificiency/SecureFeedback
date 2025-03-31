@@ -35,7 +35,8 @@ jobs:
 
     - name: 🛡️ Bandit - Static Code Analysis
       run: |
-       bandit -r . -x tests
+        bandit -r . --exclude ./tests
+
 
 
 
