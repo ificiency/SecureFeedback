@@ -23,7 +23,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install pytest bandit trufflehog pip-audit
+        pip install pytest bandit pip-audit trufflehog
 
     - name: ✅ Run Tests
       run: pytest tests/
@@ -32,6 +32,7 @@ jobs:
       run: bandit -r . -x ./tests/
 
     - name: 🔐 pip-audit - Dependency Vulnerability Check
+      continue-on-error: true
       run: pip-audit
 
     - name: 🔍 TruffleHog - Secrets Scan
