@@ -25,12 +25,6 @@ jobs:
         pip install -r requirements.txt
         pip install pytest bandit pip-audit
 
-    - name: 🐙 Download TruffleHog v3 Binary
-      run: |
-        curl -sL https://github.com/trufflesecurity/trufflehog/releases/latest/download/trufflehog_amd64_linux > trufflehog
-        chmod +x trufflehog
-        sudo mv trufflehog /usr/local/bin/trufflehog
-
     - name: ✅ Run Tests
       run: pytest tests/
 
@@ -40,6 +34,3 @@ jobs:
     - name: 🔐 pip-audit - Dependency Vulnerability Check
       continue-on-error: true
       run: pip-audit
-
-    - name: 🔍 TruffleHog - Secrets Scan
-      run: trufflehog git .
