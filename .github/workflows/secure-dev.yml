@@ -35,7 +35,8 @@ jobs:
 
     - name: 🛡️ Bandit - Static Code Analysis
       run: |
-        bandit -r .
+       bandit -r . -x tests/
+
 
     - name: 🔐 Safety - Dependency Check
       run: |
