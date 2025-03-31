@@ -25,7 +25,8 @@ jobs:
         pip install -r requirements.txt
         pip install pytest bandit
         pip install --index-url https://pypi.python.org/simple/ safety
-        # pip install trufflehog  # Optional: Uncomment if you want TruffleHog
+        pip install trufflehog  # Optional: Uncomment if you want TruffleHog
+        
 
     - name: ✅ Run Tests
       run: |
@@ -39,6 +40,12 @@ jobs:
     - name: 🔐 Safety - Dependency Check
       run: |
         safety check
+        
+
+    - name: 🔍 TruffleHog - Secrets Scan
+      run: |
+        trufflehog filesystem --directory . --no-update
+
 
     # Optional: Uncomment if TruffleHog is installed and working
     # - name: 🔍 TruffleHog - Secrets Scan
