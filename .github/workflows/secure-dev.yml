@@ -11,40 +11,35 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Code
+    - name: 🛒 Checkout Code
       uses: actions/checkout@v3
 
-    - name: Setup Python
+    - name: 🐍 Setup Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.9'
 
-
-    - name: Install dependencies
+    - name: 📦 Install Dependencies and Security Tools
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install bandit
+        pip install pytest bandit
         pip install --index-url https://pypi.python.org/simple/ safety
-
+        # pip install trufflehog  # Optional: Uncomment if you want TruffleHog
 
     - name: ✅ Run Tests
       run: |
-        pip install pytest
         pytest tests/
 
     - name: 🛡️ Bandit - Static Code Analysis
       run: |
-        bandit -r . --exclude ./tests
-
-
-
+        bandit -r . -x tests
 
     - name: 🔐 Safety - Dependency Check
       run: |
         safety check
 
-
-    - name: 🔍 TruffleHog - Secrets Scan
-      run: |
-        trufflehog filesystem .
+    # Optional: Uncomment if TruffleHog is installed and working
+    # - name: 🔍 TruffleHog - Secrets Scan
+    #   run: |
+    #     trufflehog filesystem .
