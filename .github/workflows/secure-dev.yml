@@ -36,4 +36,6 @@ jobs:
       run: pip-audit
 
     - name: 🔍 TruffleHog - Secrets Scan
-      run: trufflehog filesystem --directory . --no-update
+      run: |
+        trufflehog git file://. --no-update
+
