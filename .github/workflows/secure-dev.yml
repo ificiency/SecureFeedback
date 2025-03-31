@@ -32,8 +32,8 @@ jobs:
       run: bandit -r . -x ./tests/
 
     - name: 🔐 pip-audit - Dependency Vulnerability Check
-      continue-on-error: true  # prevents fail on known CVEs, logs only
+      continue-on-error: true
       run: pip-audit
 
     - name: 🔍 TruffleHog - Secrets Scan
-      run: trufflehog git . --no-update  # ✅ Fixed syntax
+      run: trufflehog git --repo-path . --no-update
