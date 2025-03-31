@@ -36,7 +36,7 @@ jobs:
 
     - name: 🔐 Safety - Dependency Check
       run: |
-        safety check
+        safety scan --full-report
 
     - name: 🔍 TruffleHog - Secrets Scan
       run: |
