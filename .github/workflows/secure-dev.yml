@@ -38,6 +38,7 @@ jobs:
        bandit -r . -x tests/
 
 
+
     - name: 🔐 Safety - Dependency Check
       run: |
         safety check
