@@ -27,7 +27,7 @@ jobs:
 
     - name: 🐙 Download TruffleHog v3 Binary
       run: |
-        curl -L https://github.com/trufflesecurity/trufflehog/releases/latest/download/trufflehog-linux-amd64 -o trufflehog
+        curl -sL https://github.com/trufflesecurity/trufflehog/releases/latest/download/trufflehog_amd64_linux > trufflehog
         chmod +x trufflehog
         sudo mv trufflehog /usr/local/bin/trufflehog
 
