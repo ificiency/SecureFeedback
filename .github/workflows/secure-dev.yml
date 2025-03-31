@@ -36,4 +36,4 @@ jobs:
       run: pip-audit
 
     - name: 🔍 TruffleHog - Secrets Scan
-      run: trufflehog git --repo-path . --no-update
+      run: trufflehog git .
